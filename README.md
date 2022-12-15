@@ -1,0 +1,9 @@
+# Linear Regression task for Fetch Rewards
+The codebase is my submission for for Fetch Rewards Machine Learning Engineer hiring process linked [here](https://fetch-hiring.s3.amazonaws.com/machine-learning-engineer/receipt-count-prediction/Receipt_Count_Prediction.html). The task is simple, we are given daywise receipt count data in `data_daily.csv` for the year 2021. Based on the pattern observed in 2021 we need to build a model which can predict monthwise receipt counts for the year 2022.
+
+The `Modeling.ipynb` can be see to both run the training process and creation of visuals. Because the notebook has already been run with a lot of explanation in the markdown, one can head to that as the first stop to understand the codebase. The model learnable parameters are then used to instantiate model class and provide prediction for 2022 in `Docker/Appscript.py`. We have also packaged `Docker/Appscript.py` and `Docker/data_daily.csv` into a Dockerfile that a user can build and run locally to get. (Note: Docker image built doesn't print out matplotlib visuals as docker doesn't directly support matplotlibs through pip install.)
+
+For locally running `Appscript.py`, one can either directly run the file or building docker image and run it locally using the `Dockerfile`:
+
+* For running the script directly, pull the repo and `cd` into `Docker/` directory within repo on a terminal and then run `python Appscript.py`. (This will create visuals)
+* For Building and running docker image: first `cd` into `Docker/` directory within repo on a terminal and then run `docker build -t python-fetchrewards .` (this will take a minute to run). After the image is build, run the script within the container by `docker run python-fetchrewards` (This won't create visuals, use the previous method to see visuals, also the same visuals are available in `Modeling.ipynb`)
